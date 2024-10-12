@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+	<defs>
+		<path id="a" fill="none" stroke-linecap="round" stroke-linejoin="round" d="M4 4V12M4 8A1 1 0 0112 8V12"/>
+	</defs>
+	<use href="#a" stroke="#818181" stroke-width="5"/>
+	<use href="#a" stroke="#ffffff" stroke-width="2"/>
+</svg>

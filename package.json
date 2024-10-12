@@ -1,0 +1,42 @@
+{
+	"name": "nobedx",
+	"version": "1.0.0",
+	"description": "Tool for building web front-end projects",
+	"keywords": [
+		"bun",
+		"front-end",
+		"tool",
+		"web"
+	],
+	"homepage": "https://github.com/leluvara/nobedx",
+	"author": "Leluvara",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/leluvara/nobedx.git"
+	},
+	"bugs": {
+		"url": "https://github.com/leluvara/nobedx/issues"
+	},
+	"main": "nobe/lib/nobedx.js",
+	"module": "nobe/lib/nobedx.js",
+	"scripts": {
+		"preview": "bun nobe/dev/preview.js",
+		"serve": "bun --hot nobe/dev/serve.js",
+		"write": "bun nobe/dev/write.js"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"files": [
+		"nobe/lib/**/*"
+	],
+	"prettier": {
+		"semi": false,
+		"singleQuote": true,
+		"useTabs": true
+	}
+}

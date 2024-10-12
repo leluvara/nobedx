@@ -1,0 +1,65 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+:root {
+	--bg: #fff;
+	--fg: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #222;
+		--fg: #fff;
+	}
+}
+
+html {
+	background-color: var(--bg);
+	color: var(--fg);
+}
+
+body {
+	margin: 0;
+}
+
+a {
+	color: dodgerblue;
+}
+
+table {
+	font-family: monospace;
+	white-space: nowrap;
+	inline-size: 100%;
+}
+
+td,
+th {
+	background-color: #8882;
+}
+
+td:first-child,
+th:first-child {
+	inline-size: 12em;
+}
+
+figure {
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+}
+
+body > * {
+	inline-size: 100%;
+	max-inline-size: 45rem;
+	margin-inline-end: auto;
+	margin-inline-start: auto;
+}
+
+img {
+	display: block;
+	block-size: auto;
+	max-inline-size: 100%;
+}
