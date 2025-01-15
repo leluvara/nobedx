@@ -8,6 +8,9 @@ import { rewrite } from './options/rewrite.js'
 const text = async (file) => await file.bun.text()
 
 export const serve = {
+	map: {
+		variable: 'serve[variable]',
+	},
 	url: 'nobedx',
 	www: {
 		'**/*.html': rewrite,
@@ -17,6 +20,9 @@ export const serve = {
 }
 
 export const write = {
+	map: {
+		variable: 'write[variable]',
+	},
 	url: 'https://leluvara.github.io/nobedx',
 	www: {
 		'**/*.html': rewrite,

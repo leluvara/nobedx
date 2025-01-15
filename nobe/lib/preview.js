@@ -6,12 +6,14 @@ import { Watcher } from './Watcher.js'
 /**
  * Start preview server
  * @param {import('./options.js').Options} [options]
+ * @param {import('bun').ServeOptions} [serveOptions]
  * @returns {Promise<import('bun').Server>}
  */
-export const preview = async (options) => {
+export const preview = async (options, serveOptions) => {
 	const mode = 'preview'
 
 	const server = Bun.serve({
+		...serveOptions,
 		async fetch(req) {
 			const url = new URL(req.url)
 			const pathname = collapseSlashes(url.pathname)
@@ -46,8 +48,8 @@ export const preview = async (options) => {
 		},
 	})
 
-	const { out, url, www } = createOptions(options, server)
-	const site = new Site(mode, out, url, www)
+	const { out, url, www, map } = createOptions(options, server)
+	const site = new Site(mode, out, url, www, map)
 	await site.update()
 
 	new Watcher(out, site)

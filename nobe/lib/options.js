@@ -2,6 +2,7 @@ import { collapseSlashes, cwdURL } from './utils.js'
 
 /**
  * @typedef {object} Options
+ * @property {object} [map]
  * @property {string} [out]
  * @property {string} [url]
  * @property {object} [www]
@@ -9,6 +10,7 @@ import { collapseSlashes, cwdURL } from './utils.js'
 
 /** @type {Options} */
 const defaultOptions = {
+	map: {},
 	out: 'out',
 	url: undefined,
 	www: {},
@@ -25,6 +27,18 @@ export const createOptions = (options, server) => {
 		options = { ...defaultOptions, ...options }
 	} else {
 		options = defaultOptions
+	}
+
+	const map = new Map()
+
+	if (typeof options.map === 'object') {
+		for (const key in options.map) {
+			const val = options.map[key]
+
+			if (typeof val === 'number' || typeof val === 'string') {
+				map.set(key, val)
+			}
+		}
 	}
 
 	let out
@@ -70,5 +84,5 @@ export const createOptions = (options, server) => {
 		}
 	}
 
-	return { out, url, www }
+	return { map, out, url, www }
 }

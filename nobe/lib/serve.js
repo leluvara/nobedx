@@ -6,13 +6,15 @@ import { Watcher } from './Watcher.js'
 /**
  * Start development server
  * @param {import('./options.js').Options} [options]
+ * @param {import('bun').ServeOptions} [serveOptions]
  * @returns {Promise<import('bun').Server>}
  */
-export const serve = async (options) => {
+export const serve = async (options, serveOptions) => {
 	const mode = 'serve'
 
 	const server = Bun.serve({
 		idleTimeout: 0,
+		...serveOptions,
 		async fetch(req) {
 			const url = new URL(req.url)
 			const pathname = collapseSlashes(url.pathname)
@@ -79,9 +81,9 @@ export const serve = async (options) => {
 		},
 	})
 
-	const { out, url, www } = createOptions(options, server)
+	const { out, url, www, map } = createOptions(options, server)
 
-	const site = new Site(mode, wwwURL, url, www)
+	const site = new Site(mode, wwwURL, url, www, map)
 	await site.update()
 
 	const watcher = new Watcher(nobeURL, site)

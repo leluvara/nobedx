@@ -10,7 +10,7 @@ import { log, wwwURL } from './utils.js'
 export const write = async (options) => {
 	const mode = 'write'
 
-	const { out, url, www } = createOptions(options)
+	const { out, url, www, map } = createOptions(options)
 
 	if (!url) {
 		throw new Error(
@@ -20,7 +20,7 @@ export const write = async (options) => {
 
 	log(mode, out, url)
 
-	const site = new Site(mode, wwwURL, url, www)
+	const site = new Site(mode, wwwURL, url, www, map)
 
 	// update site
 	await site.update()

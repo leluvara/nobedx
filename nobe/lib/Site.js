@@ -11,12 +11,14 @@ export class Site {
 	 * @param {URL} rootDirURL
 	 * @param {URL} url
 	 * @param {Map<import('bun').Glob, function>} www
+	 * @param {Map<string, number|string>} map
 	 */
-	constructor(mode, rootDirURL, url, www) {
+	constructor(mode, rootDirURL, url, www, map) {
 		this.mode = mode
 		this.rootDirURL = rootDirURL
 		this.url = url
 		this.www = www
+		this.map = map
 
 		this.isWalking = false
 
@@ -136,6 +138,10 @@ export class Site {
 	 */
 	resolveNobe(file, body) {
 		return body.replace(/nobe\[(.*?)\]/g, (match, group) => {
+			if (this.map.has(group)) {
+				return this.map.get(group)
+			}
+
 			if (group.startsWith('#')) {
 				const hash = group.slice(1)
 
