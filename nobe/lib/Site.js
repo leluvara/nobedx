@@ -145,7 +145,7 @@ export class Site {
 			if (group.startsWith('#')) {
 				const hash = group.slice(1)
 
-				if (file.hash) {
+				if (file.hash && (hash === 'href' || hash === 'pathname')) {
 					console.warn(
 						`Warning: a file with its hash in its name can not reference itself!`
 					)

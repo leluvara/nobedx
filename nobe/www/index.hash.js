@@ -1,3 +1,5 @@
+console.log('nobe[#hostname]')
+
 const workerURL = new URL('nobe[worker.hash.js]', import.meta.url)
 console.log('Worker URL:', workerURL.href)
 
